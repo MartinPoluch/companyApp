@@ -1,18 +1,24 @@
 package com.poluch.martin.companyApp.service;
 
 import com.poluch.martin.companyApp.entity.Employee;
+import com.poluch.martin.companyApp.entity.Position;
 
 import java.util.List;
+import java.util.Set;
 
 
 public interface EmployeeService {
 
-	public List<Employee> findAll();
+	List<Employee> findAll();
 	
-	public Employee findById(int theId);
+	Employee findById(int theId);
 	
-	public void save(Employee theEmployee);
+	void save(Employee theEmployee);
 	
-	public void deleteById(int theId);
+	void deleteById(int theId);
+
+	List<Position> findAllPositions();
+
+
 	
 }

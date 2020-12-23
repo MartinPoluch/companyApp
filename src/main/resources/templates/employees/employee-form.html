@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Save Employee</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <h3>Employee Directory</h3>
+        <hr>
+
+        <p class="h4 mb-4">Save Employee</p>
+
+        <form action="#" th:action="@{/employees/save}"
+              th:object="${employee}" method="POST">
+
+            <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{id}" />
+
+            <input th:replace="~{fragments/form/textField :: input ('First Name', 'firstName')}" />
+            <input th:replace="~{fragments/form/textField :: input ('Last name', 'lastName')}" />
+            <input th:replace="~{fragments/form/textField :: input ('Email', 'email')}" />
+            <input th:replace="~{fragments/form/textField :: input ('Street', 'address.street')}" />
+            <input th:replace="~{fragments/form/textField :: input ('City', 'address.city')}" />
+            <input th:replace="~{fragments/form/selectField :: select ('Position', 'position', ${positions})}" />
+
+            <button type="submit" class="btn btn-primary col-2">Submit</button>
+        </form>
+
+        <hr>
+        <a th:href="@{/employees}">Back to Employees List</a>
+
+    </div>
+
+</body>
+</html>

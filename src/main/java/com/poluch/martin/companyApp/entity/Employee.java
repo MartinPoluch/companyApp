@@ -1,23 +1,11 @@
 package com.poluch.martin.companyApp.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="employee")
-public class Employee {
+public class Employee extends BaseEntity {
 
-	// define fields
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
-	private int id;
-	
 	@Column(name="first_name")
 	private String firstName;
 	
@@ -26,36 +14,17 @@ public class Employee {
 	
 	@Column(name="email")
 	private String email;
-	
-		
-	// define constructors
-	
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", referencedColumnName = "id")
+	private Address address;
+
+	@ManyToOne
+	@JoinColumn(name = "position_id")
+	private Position position;
+
 	public Employee() {
 		
-	}
-	
-	public Employee(int id, String firstName, String lastName, String email) {
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-	}
-
-
-	public Employee(String firstName, String lastName, String email) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-	}
-
-	// define getter/setter
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -82,11 +51,25 @@ public class Employee {
 		this.email = email;
 	}
 
-	// define tostring
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public Position getPosition() {
+		return position;
+	}
+
+	public void setPosition(Position position) {
+		this.position = position;
+	}
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+		return "Employee [id=" + getId() + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
 		
 }
