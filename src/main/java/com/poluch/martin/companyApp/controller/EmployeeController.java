@@ -2,16 +2,12 @@ package com.poluch.martin.companyApp.controller;
 
 import java.util.Collection;
 import java.util.List;
-
 import com.poluch.martin.companyApp.entity.Employee;
 import com.poluch.martin.companyApp.entity.Position;
 import com.poluch.martin.companyApp.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.persistence.Embeddable;
-
 
 @Controller
 @RequestMapping("/employees")

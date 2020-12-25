@@ -11,11 +11,11 @@ public interface EmployeeService {
 
 	List<Employee> findAll();
 	
-	Employee findById(int theId);
+	Employee findById(int id);
 	
 	void save(Employee theEmployee);
 	
-	void deleteById(int theId);
+	void deleteById(int id);
 
 	List<Position> findAllPositions();
 

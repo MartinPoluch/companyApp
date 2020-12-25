@@ -15,6 +15,9 @@ public class Employee extends BaseEntity {
 	@Column(name="email")
 	private String email;
 
+	@Column(name = "hobby")
+	private String hobby;
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id", referencedColumnName = "id")
 	private Address address;
@@ -65,6 +68,14 @@ public class Employee extends BaseEntity {
 
 	public void setPosition(Position position) {
 		this.position = position;
+	}
+
+	public String getHobby() {
+		return hobby;
+	}
+
+	public void setHobby(String hobby) {
+		this.hobby = hobby;
 	}
 
 	@Override

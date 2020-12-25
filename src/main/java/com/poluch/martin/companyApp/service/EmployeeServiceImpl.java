@@ -11,7 +11,6 @@ import com.poluch.martin.companyApp.entity.Position;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -30,19 +29,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee findById(int theId) {
-		Optional<Employee> result = employeeRepository.findById(theId);
-		
-		Employee theEmployee = null;
-		
+	public Employee findById(int id) {
+		Optional<Employee> result = employeeRepository.findById(id);
+
+		Employee employee = null;
+
 		if (result.isPresent()) {
-			theEmployee = result.get();
+			employee = result.get();
 		}
 		else {
-			throw new RuntimeException("Did not find employee id - " + theId);
+			throw new RuntimeException("Did not find employee id - " + id);
 		}
-		
-		return theEmployee;
+
+		return employee;
 	}
 
 	@Override

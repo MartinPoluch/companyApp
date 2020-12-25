@@ -26,11 +26,12 @@
             <!-- Add hidden form field to handle update -->
             <input type="hidden" th:field="*{id}" />
 
-            <input th:replace="~{fragments/form/textField :: input ('First Name', 'firstName')}" />
-            <input th:replace="~{fragments/form/textField :: input ('Last name', 'lastName')}" />
-            <input th:replace="~{fragments/form/textField :: input ('Email', 'email')}" />
-            <input th:replace="~{fragments/form/textField :: input ('Street', 'address.street')}" />
-            <input th:replace="~{fragments/form/textField :: input ('City', 'address.city')}" />
+            <input th:replace="~{fragments/form/textField :: input ('First Name', 'firstName', 'text')}" />
+            <input th:replace="~{fragments/form/textField :: input ('Last name', 'lastName', 'text')}" />
+            <input th:replace="~{fragments/form/textField :: input ('Email', 'email', 'text')}" />
+            <input th:replace="~{fragments/form/textField :: input ('Hobby', 'hobby', 'textarea')}" />
+            <input th:replace="~{fragments/form/textField :: input ('Street', 'address.street', 'text')}" />
+            <input th:replace="~{fragments/form/textField :: input ('City', 'address.city', 'text')}" />
             <input th:replace="~{fragments/form/selectField :: select ('Position', 'position', ${positions})}" />
 
             <button type="submit" class="btn btn-primary col-2">Submit</button>
