@@ -6,64 +6,77 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <title>Employee Directory</title>
+
+    <title>Employees</title>
+    <div th:include="~{fragments/layout/sidebar :: links}" th:remove="tag"></div>
+
 </head>
 
 <body>
 
 <div class="container">
 
-    <h3>Employee Directory</h3>
-    <hr>
+    <div class="wrapper">
+        <div th:replace="~{fragments/layout/sidebar :: sidebar}"></div>
 
-    <!-- Add a button -->
-    <a th:href="@{/employees/create}"
-       class="btn btn-primary btn-sm mb-3">
-        Add Employee
-    </a>
 
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Street</th>
-            <th>City</th>
-            <th>Action</th>
-        </tr>
-        </thead>
+        <!-- Page Content -->
+        <div id="content">
 
-        <tbody>
-        <tr th:each="employee : ${employees}">
+            <!-- Add a button -->
+            <a th:href="@{/employees/create}"
+               class="btn btn-primary btn-sm mb-3">
+                Add Employee
+            </a>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Street</th>
+                    <th>City</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
 
-            <td th:text="${employee.firstName}" />
-            <td th:text="${employee.lastName}" />
-            <td th:text="${employee.email}" />
-            <td th:text="${employee.address.street}" />
-            <td th:text="${employee.address.city}"/>
+                <tbody>
+                <tr th:each="employee : ${employees}">
 
-            <td>
-                <a th:href="@{/employees/edit/{id}(id=${employee.id})}"
-                   class="btn btn-info btn-sm">
-                    Update
-                </a>
+                    <td th:text="${employee.firstName}" />
+                    <td th:text="${employee.lastName}" />
+                    <td th:text="${employee.email}" />
+                    <td th:text="${employee.address.street}" />
+                    <td th:text="${employee.address.city}"/>
 
-                <a th:href="@{/employees/delete/{id}(id=${employee.id})}"
-                   class="btn btn-danger btn-sm"
-                   onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
-                    Delete
-                </a>
-            </td>
+                    <td>
+                        <a th:href="@{/employees/edit/{id}(id=${employee.id})}"
+                           class="btn btn-info btn-sm">
+                            Update
+                        </a>
 
-        </tr>
-        </tbody>
-    </table>
+                        <a th:href="@{/employees/delete/{id}(id=${employee.id})}"
+                           class="btn btn-danger btn-sm"
+                           onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
+                            Delete
+                        </a>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/layout/sidebar :: scripts}"></div>
+
+
+
+
 
 </div>
+
 
 </body>
 </html>

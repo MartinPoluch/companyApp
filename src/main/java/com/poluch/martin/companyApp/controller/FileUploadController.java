@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/upload")
 public class FileUploadController {
 
     private FileUploadService fileUploadService;
@@ -23,7 +23,7 @@ public class FileUploadController {
 
     @GetMapping
     public String index() {
-        return "index";
+        return "fileUpload";
     }
 
     @PostMapping
@@ -35,6 +35,6 @@ public class FileUploadController {
             message = "Cannot upload file: " + e.getMessage();
         }
         redirectAttributes.addFlashAttribute("message", message);
-        return "redirect:/";
+        return "redirect:/upload";
     }
 }

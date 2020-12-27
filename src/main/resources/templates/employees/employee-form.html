@@ -10,37 +10,49 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <title>Save Employee</title>
+
+    <div th:include="~{fragments/layout/sidebar :: links}" th:remove="tag"></div>
 </head>
 <body>
 
-    <div class="container">
+<div class="wrapper">
+    <div th:replace="~{fragments/layout/sidebar :: sidebar}"></div>
 
-        <h3>Employee Directory</h3>
-        <hr>
 
-        <p class="h4 mb-4">Save Employee</p>
+    <!-- Page Content -->
+    <div id="content">
+        <div class="container">
 
-        <form action="#" th:action="@{/employees/save}"
-              th:object="${employee}" method="POST">
+            <p class="h4 mb-4">Save Employee</p>
 
-            <!-- Add hidden form field to handle update -->
-            <input type="hidden" th:field="*{id}" />
+            <form action="#" th:action="@{/employees/save}"
+                  th:object="${employee}" method="POST">
 
-            <input th:replace="~{fragments/form/textField :: input ('First Name', 'firstName', 'text')}" />
-            <input th:replace="~{fragments/form/textField :: input ('Last name', 'lastName', 'text')}" />
-            <input th:replace="~{fragments/form/textField :: input ('Email', 'email', 'text')}" />
-            <input th:replace="~{fragments/form/textField :: input ('Hobby', 'hobby', 'textarea')}" />
-            <input th:replace="~{fragments/form/textField :: input ('Street', 'address.street', 'text')}" />
-            <input th:replace="~{fragments/form/textField :: input ('City', 'address.city', 'text')}" />
-            <input th:replace="~{fragments/form/selectField :: select ('Position', 'position', ${positions})}" />
+                <!-- Add hidden form field to handle update -->
+                <input type="hidden" th:field="*{id}" />
 
-            <button type="submit" class="btn btn-primary col-2">Submit</button>
-        </form>
+                <input th:replace="~{fragments/form/textField :: input ('First Name', 'firstName', 'text')}" />
+                <input th:replace="~{fragments/form/textField :: input ('Last name', 'lastName', 'text')}" />
+                <input th:replace="~{fragments/form/textField :: input ('Email', 'email', 'text')}" />
+                <input th:replace="~{fragments/form/textField :: input ('Hobby', 'hobby', 'textarea')}" />
+                <input th:replace="~{fragments/form/textField :: input ('Street', 'address.street', 'text')}" />
+                <input th:replace="~{fragments/form/textField :: input ('City', 'address.city', 'text')}" />
+                <input th:replace="~{fragments/form/selectField :: select ('Position', 'position', ${positions})}" />
 
-        <hr>
-        <a th:href="@{/employees}">Back to Employees List</a>
+                <button type="submit" class="btn btn-primary col-2">Submit</button>
+            </form>
 
+            <hr>
+            <a th:href="@{/employees}">Back to Employees List</a>
+
+        </div>
     </div>
+</div>
+
+<div th:replace="~{fragments/layout/sidebar :: scripts}"></div>
+
+
+
 
 </body>
 </html>
